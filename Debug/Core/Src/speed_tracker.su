@@ -1,0 +1,7 @@
+../Core/Src/speed_tracker.c:29:1:HAL_TIM_IC_CaptureCallback	16	static
+../Core/Src/speed_tracker.c:76:1:SpeedTracker_CalcFrequency	32	static
+../Core/Src/speed_tracker.c:115:1:SpeedTracker_GetPCLK1Freq	16	static
+../Core/Src/speed_tracker.c:134:1:SpeedTracker_GetFrequency	4	static
+../Core/Src/speed_tracker.c:140:1:SpeedTracker_GetDirection	4	static
+../Core/Src/speed_tracker.c:146:1:SpeedTracker_GetSector	4	static
+../Core/Src/speed_tracker.c:152:1:SpeedTracker_SetFrequencyToZero	4	static

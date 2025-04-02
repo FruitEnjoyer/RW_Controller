@@ -1,0 +1,9 @@
+../Core/Src/trajectory_control.c:52:1:TrajCtrl_SetVelocity	2
+../Core/Src/trajectory_control.c:65:1:TrajCtrl_ReachTargetSpeed	26
+../Core/Src/trajectory_control.c:183:1:TrajCtrl_KeepAcceleration	27
+../Core/Src/trajectory_control.c:313:1:TrajCtrl_AbortTask	1
+../Core/Src/trajectory_control.c:320:1:TrajCtrl_EnableDisableTim6Interrupts	3
+../Core/Src/trajectory_control.c:334:1:TrajCtrl_Ctrl2Speed	2
+../Core/Src/trajectory_control.c:351:1:TrajectoryControl_FindIndexForSpeed	4
+../Core/Src/trajectory_control.c:364:1:TrajCtrl_Speed2Ctrl	2
+../Core/Src/trajectory_control.c:381:1:TrajectoryControl_FindIndexForControl	4

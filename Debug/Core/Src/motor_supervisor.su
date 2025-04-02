@@ -1,0 +1,2 @@
+../Core/Src/motor_supervisor.c:23:1:MotorSupervisor_UpdateRotorSyncFlag	16	static
+../Core/Src/motor_supervisor.c:33:1:MotorSupervisor_GetSyncFlag	4	static
