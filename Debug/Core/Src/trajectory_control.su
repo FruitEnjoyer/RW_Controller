@@ -1,9 +1,0 @@
-../Core/Src/trajectory_control.c:52:1:TrajCtrl_SetVelocity	8	static
-../Core/Src/trajectory_control.c:65:1:TrajCtrl_ReachTargetSpeed	64	static
-../Core/Src/trajectory_control.c:183:1:TrajCtrl_KeepAcceleration	64	static
-../Core/Src/trajectory_control.c:313:1:TrajCtrl_AbortTask	4	static
-../Core/Src/trajectory_control.c:320:1:TrajCtrl_EnableDisableTim6Interrupts	8	static
-../Core/Src/trajectory_control.c:334:1:TrajCtrl_Ctrl2Speed	32	static
-../Core/Src/trajectory_control.c:351:1:TrajectoryControl_FindIndexForSpeed	24	static
-../Core/Src/trajectory_control.c:364:1:TrajCtrl_Speed2Ctrl	32	static
-../Core/Src/trajectory_control.c:381:1:TrajectoryControl_FindIndexForControl	24	static

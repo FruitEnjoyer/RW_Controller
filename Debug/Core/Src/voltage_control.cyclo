@@ -1,7 +1,0 @@
-../Core/Src/voltage_control.c:28:1:VoltageControl_Start	3
-../Core/Src/voltage_control.c:45:1:VoltageControl_Stop	1
-../Core/Src/voltage_control.c:56:1:VoltageControl_FineCorrection	7
-../Core/Src/voltage_control.c:79:1:VoltageControl_UpdateTargetVoltage	3
-../Core/Src/voltage_control.c:95:1:VoltageControl_GetActualVoltage	1
-../Core/Src/voltage_control.c:114:1:GetADCValue	1
-../Core/Src/voltage_control.c:142:1:TargetVoltage2DAC	1
