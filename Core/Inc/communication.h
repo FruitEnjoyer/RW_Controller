@@ -9,6 +9,9 @@
 #define INC_COMMUNICATION_H_
 
 #include "main.h"
+#include "trajectory_control.h"
+
+#define ERROR_BUF_LEN  16
 
 typedef enum{
     CAN_NO_ERROR                    = HAL_CAN_ERROR_NONE,
@@ -41,37 +44,24 @@ typedef union{
     float f;
 } can_float_t;
 
+typedef enum{
+    TXMAIL_FULL = 0,
+    TXMAIL_FREE = 1
+} can_is_txmailbox_free_t;
 
-CAN_TxHeaderTypeDef TxHeader;
-CAN_RxHeaderTypeDef RxHeader;
-uint8_t TxData[8] = {0,};
-uint8_t RxData[8] = {0,};
-uint32_t TxMailbox = 0;
-uint8_t can_errors_count = 0;
-can_errors_t can_errors[16] = {CAN_NO_ERROR};
-can_float_t can_acc;
-can_float_t can_spd;
-int8_t acc = 0;
+typedef struct{
+    CAN_TxHeaderTypeDef TxHeader;
+    CAN_RxHeaderTypeDef RxHeader;
+    uint8_t TxData[8];
+    uint8_t RxData[8];
+    uint32_t TxMailbox;
 
-void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
-{
-    if(HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData) == HAL_OK)
-    {
-        for(uint8_t i = 0; i < 4; i++)
-        {
-            can_spd.b[i] = RxData[i];
-        }
-        TrajCtrl_ReachTargetSpeed(can_spd.f);
-    }
-}
+    uint8_t can_errors_count;
+    can_errors_t can_errors[16];
 
-void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan)
-{
-    uint32_t er = HAL_CAN_GetError(hcan);
-    can_errors[can_errors_count] = er;
-    can_errors_count += 1;
-    can_errors_count %= 16;
-}
-
+    can_float_t acceleration;
+    can_float_t speed;
+    uint16_t send_error;
+} communication_vars_t;
 
 #endif /* INC_COMMUNICATION_H_ */

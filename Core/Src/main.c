@@ -64,6 +64,7 @@
 /* USER CODE BEGIN PV */
 
 extern trajCtrl_taskTarget_t task_target;
+extern communication_vars_t can_vars;
 
 uint8_t flag_speed = 0;
 float target_speed = 0.f;
@@ -142,18 +143,12 @@ int main(void)
   // Включение питания трансиверов
   // FIXME: для включения на 484 RESET, на 450 SET
   HAL_GPIO_WritePin(CAN_EN_GPIO_Port, CAN_EN_Pin, GPIO_PIN_RESET);
-  TxHeader.StdId = 0x0378;
-  TxHeader.ExtId = 0;
-  TxHeader.RTR = CAN_RTR_DATA; //CAN_RTR_REMOTE
-  TxHeader.IDE = CAN_ID_STD;   // CAN_ID_EXT
-  TxHeader.DLC = 8;
-  TxHeader.TransmitGlobalTime = 0;
-
-  for(uint8_t i = 0; i < 8; i++)
-  {
-      TxData[i] = (i + 10);
-  }
-
+  can_vars.TxHeader.StdId = 0x0378;
+  can_vars.TxHeader.ExtId = 0;
+  can_vars.TxHeader.RTR = CAN_RTR_DATA; //CAN_RTR_REMOTE
+  can_vars.TxHeader.IDE = CAN_ID_STD;   // CAN_ID_EXT
+  can_vars.TxHeader.DLC = 8;
+  can_vars.TxHeader.TransmitGlobalTime = 0;
   HAL_CAN_Start(&hcan1);
   HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING | CAN_IT_ERROR | CAN_IT_BUSOFF | CAN_IT_LAST_ERROR_CODE);
 #endif
@@ -185,7 +180,7 @@ int main(void)
     {
         //TrajCtrl_AbortTask();
         //TrajCtrl_KeepAcceleration((float)acc);
-    	TrajCtrl_ReachTargetSpeed(can_spd.f);
+        TrajCtrl_ReachTargetSpeed(can_vars.speed.f);
     }
 #endif
     /*
